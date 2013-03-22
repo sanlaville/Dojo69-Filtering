@@ -1,32 +1,24 @@
-Dojo69-Filtering
-================
+FilteringTest-ArgumentsMockito branch
+=====================================
+Dans cette branche, vous trouverez un test unitaire pour la classe `Filtering` :
 
-Git Repository pour la 69e session du CARA Dojo.
+- On ne bouchonne pas notre dépendance externe [maven-filtering](http://maven.apache.org/shared/maven-filtering/ "Maven Filtering Web Site")
+- Utilisations de la librairie [Mockito](http://code.google.com/p/mockito/ "Mockito Web Site") pour bouchonner la classe `Arguments` du projet 
+- Utilisation de [FEST-Assert 2.x](https://github.com/alexruiz/fest-assert-2.x "Fest-Assert 2.x Github Repository") pour vérifier que les deux fichiers (résultats et de référence) sont identiques
 
-## Objectif ##
-L'objectif est d'essayer différentes stratégies d'écriture de tests unitaires pour le code proposé : mock ou pas mock, tester uniquement des méthodes publiques ou plus...
+# Approval Tests vs FEST-Assert 2.x
+Afin de pallier aux [limitations de Approval Tests](https://github.com/sanlaville/Dojo69-Filtering/tree/ApprovalTests "Limitations de Approval Tests"), nous utilisons cette fois la librairie [FEST-Assert 2.x](https://github.com/alexruiz/fest-assert-2.x "Fest-Assert 2.x Github Repository"). Cette librairie propose la classe [FileAssert](https://github.com/alexruiz/fest-assert-2.x/blob/master/src/main/java/org/fest/assertions/api/FileAssert.java "FileAssert source code") qui nous permet de facilement comparer les deux fichiers (résultats et de référence).
 
-Le but n'est pas de définir la meilleur stratégie mais plutôt de confronter différentes pratiques pour écrire des tests unitaires afin de confronter les avantages et inconvénients de chacune.
+Un autre avantage est qu'il n'est plus nécessaire de rajouter un label (pour distinguer chaque item de la liste des clés) au début de chaque ligne dans le fichier de référence. Du coup, les fichiers de référence et de résultats correspondent bien au format attendu. Un exemple vaut mieux qu'un long discours :
 
-De plus, nous nous fixons la contrainte de ne pas remettre en cause le choix de la librairie externe utilisée [maven-filtering](http://maven.apache.org/shared/maven-filtering/ "Maven Filtering") afin de se rapprocher du cas où nous devons nous intégrer à un environnement prédéfini.
+- Avec Approval Tests : `key[1] = key-filter1=sucess: value from filter1`
+- Avec FEST-Assert 2.x : `key-filter1=sucess: value from filter1`
 
-## Contexte ##
-Dans cette session, nous partirons d'un code assez simple qui permet de filter un fichier de propriétés contenant des clés (du style `prop1=${token-prop1}`) à partir de fichiers de filtres contenant les valeurs des clés (du style `token-prop1 = value1`). 
+Par contre, on perd l'avantage de l'utilisation des [Reporters](http://blog.approvaltests.com/2011/12/using-reporters-in-approval-tests.html "Approval Test Reporters article") de Approval Tests et le fait qu'il nous ouvre automatiquement un outil de merge comme TortoiseDiff ou WinMerge.
 
-Le projet ne propose volontairement pas de tests unitaires pour les classes Filtering.java, Main.java et StandardFilterWrapper.java car c'est le but de ce dojo de confronter différentes stratégies de tests unitaires pour ces classes.
-
-Pour lancer une exécution :
-
-- packager le projet : mvn clean package
-- se placer sous le répertoire target : cd target
-- lancer la commande :</br>
-	`java -jar dojo69-1.0.0-SNAPHOT.jar test-classes/config.properties test-classes/config-filtered.properties test-classes/filter1.properties test-classes/filter2.properties`
-- le fichier de propriété filtré se trouve sous : test-classes/config-filtered.properties
-
-## Déroulement ##
-Nous ferons plusieurs groupes avec des stratégies différentes et nous partagerons ensuite sur les différentes pratiques. Nous essayerons de faire 2 itérations de 45 minutes : 30 minutes de codage + 15 minutes d'échanges.
 
 # Branches du projet
 
 - [Master](https://github.com/sanlaville/Dojo69-Filtering "master branch") : introduction du dojo 
 - [Approval Tests](https://github.com/sanlaville/Dojo69-Filtering "Approval Tests branch") : un test d'intégration qui permet par exemple d'écrire rapidement un test sur un code legacy pour pouvoir le refactorer.
+- [FilteringTest-ArgumentsMockito](https://github.com/sanlaville/Dojo69-Filtering "FilteringTest-ArgumentsMockito branch") : un test unitaire pour la classe `Filtering` sans bouchonner la dépendance externe [maven-filtering](http://maven.apache.org/shared/maven-filtering/ "Maven Filtering Web Site"). Utilisation de [FEST-Assert 2.x](https://github.com/alexruiz/fest-assert-2.x "Fest-Assert 2.x Github Repository") pour pallier aux [limitations de Approval Tests](https://github.com/sanlaville/Dojo69-Filtering/tree/ApprovalTests "Limitations de Approval Tests")
