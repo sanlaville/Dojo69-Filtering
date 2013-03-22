@@ -25,4 +25,8 @@ Pour lancer une exécution :
 
 ## Déroulement ##
 Nous ferons plusieurs groupes avec des stratégies différentes et nous partagerons ensuite sur les différentes pratiques. Nous essayerons de faire 2 itérations de 45 minutes : 30 minutes de codage + 15 minutes d'échanges.
- 
+
+# Branches du projet
+
+- [Master](https://github.com/sanlaville/Dojo69-Filtering "master branch") : introduction du dojo 
+- [Approval Tests](https://github.com/sanlaville/Dojo69-Filtering "Approval Tests branch") : un test d'intégration qui permet par exemple d'écrire rapidement un test sur un code legacy pour pouvoir le refactorer.
