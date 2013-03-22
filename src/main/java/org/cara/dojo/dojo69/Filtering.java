@@ -7,7 +7,7 @@ import org.codehaus.plexus.util.FileUtils;
 
 public class Filtering {
 
-  public void filter(Arguments arguments) throws MavenFilteringException,
+  public void filter(IArguments arguments) throws MavenFilteringException,
       IOException {
 
     StandardFilterWrapper filterWrapper =

@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.fest.assertions.api.Assertions;
 import org.junit.Test;
-import org.mockito.Mockito;
 
 
 public class FilteringTest {
@@ -24,10 +23,7 @@ public class FilteringTest {
 		filterFiles.add("target/test-classes/filter1.properties");
 		filterFiles.add("target/test-classes/filter2.properties");
 
-		Arguments arguments = Mockito.mock(Arguments.class);
-		Mockito.when(arguments.getFileToProcess()).thenReturn(fileToProcess);
-		Mockito.when(arguments.getFileProcessed()).thenReturn(fileProcessed);
-		Mockito.when(arguments.getFilterFiles()).thenReturn(filterFiles);
+		IArguments arguments = new ArgumentsMock(fileToProcess, fileProcessed, filterFiles);
 		
 		// When
 		filtering.filter(arguments);
