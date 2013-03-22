@@ -3,7 +3,7 @@ FilteringTest-ArgumentsMockito branch
 Dans cette branche, vous trouverez un test unitaire pour la classe `Filtering` :
 
 - On ne bouchonne pas notre dépendance externe [maven-filtering](http://maven.apache.org/shared/maven-filtering/ "Maven Filtering Web Site")
-- Utilisations de la librairie [Mockito](http://code.google.com/p/mockito/ "Mockito Web Site") pour bouchonner la classe `Arguments` du projet 
+- Utilisation de la librairie [Mockito](http://code.google.com/p/mockito/ "Mockito Web Site") pour bouchonner la classe `Arguments` du projet 
 - Utilisation de [FEST-Assert 2.x](https://github.com/alexruiz/fest-assert-2.x "Fest-Assert 2.x Github Repository") pour vérifier que les deux fichiers (résultats et de référence) sont identiques
 
 # Approval Tests vs FEST-Assert 2.x
