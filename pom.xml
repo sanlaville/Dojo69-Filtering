@@ -33,6 +33,11 @@
 			<version>1.8.4</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+            <groupId>com.approvaltests</groupId>
+            <artifactId>approval</artifactId>
+        <version>0.13</version>
+</dependency>
 	</dependencies>
 	
 	<build>
