@@ -13,14 +13,14 @@ public class Filtering {
     StandardFilterWrapper filterWrapper =
         new StandardFilterWrapper(arguments.getFilterFiles());
 
-    filter(arguments.getFileToProcess(), filterWrapper);
+    filter(arguments.getFileToProcess(),arguments.getFileProcessed(), filterWrapper);
   }
 
-  private void filter(String inputFile, StandardFilterWrapper filterWrapper)
+  private void filter(String inputFile, String outputFile, StandardFilterWrapper filterWrapper)
       throws IOException {
 
     File from = new File(inputFile);
-    File to = new File(inputFile + "_valorized");
+    File to = new File(outputFile);
 
     FileUtils.FilterWrapper[] wrappers =
         new FileUtils.FilterWrapper[] { filterWrapper };

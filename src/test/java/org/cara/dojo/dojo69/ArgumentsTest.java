@@ -50,7 +50,7 @@ public class ArgumentsTest {
 
     // Then
     Assertions.assertThat(arguments.getFileToProcess()).isEqualTo(arg1);
-    Assertions.assertThat(arguments.getFilterFiles()).containsExactly(arg2,
-        arg3, arg4);
+    Assertions.assertThat(arguments.getFileProcessed()).isEqualTo(arg2);
+    Assertions.assertThat(arguments.getFilterFiles()).containsExactly(arg3, arg4);
   }
 }

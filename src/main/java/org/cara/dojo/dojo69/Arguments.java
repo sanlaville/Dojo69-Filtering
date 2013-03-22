@@ -5,8 +5,9 @@ import java.util.List;
 
 public class Arguments {
 
-  private List<String> filterFiles;
   private String fileToProcess;
+  private String fileProcessed;
+  private List<String> filterFiles;
 
   public void parse(String[] args) {
 
@@ -16,8 +17,9 @@ public class Arguments {
           + nbMinExpectedArgs + " arguments.");
     }
     fileToProcess = args[0];
+    fileProcessed = args[1];
     filterFiles = new ArrayList<String>();
-    for (int i = 1; i < args.length; ++i) {
+    for (int i = 2; i < args.length; ++i) {
       filterFiles.add(args[i]);
     }
   }
@@ -31,5 +33,9 @@ public class Arguments {
 
     return fileToProcess;
   }
+
+public String getFileProcessed() {
+	return fileProcessed;
+}
 
 }

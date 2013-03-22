@@ -19,9 +19,9 @@ Pour lancer une exécution :
 
 - packager le projet : mvn clean package
 - se placer sous le répertoire target : cd target
-- lancer la commande : java -jar dojo69-1.0.0-SNAPHOT.jar test-classes/config.properties test-classes/filter1.properties test-classes/filter2.properties
-- le fichier de propriété filtré se trouve sous : test-classes/config.properties_valorized
-
+- lancer la commande :</br>
+	`java -jar dojo69-1.0.0-SNAPHOT.jar test-classes/config.properties test-classes/config-filtered.properties test-classes/filter1.properties test-classes/filter2.properties`
+- le fichier de propriété filtré se trouve sous : test-classes/config-filtered.properties
 
 ## Déroulement ##
 Nous ferons plusieurs groupes avec des stratégies différentes et nous partagerons ensuite sur les différentes pratiques. Nous essayerons de faire 2 itérations de 45 minutes : 30 minutes de codage + 15 minutes d'échanges.
