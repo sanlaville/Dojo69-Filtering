@@ -23,7 +23,11 @@ Cela fonctionne bien mais il serait plus intéressant de pouvoir directement ind
 
 Il faut sans doute regarder vers l'instruction [Approvals.verify(generateFile)](https://github.com/approvals/ApprovalTests.Java/blob/master/java/org/approvaltests/Approvals.java#L159-162);
 
+## Solutions possibles
+Pour contourner ces deux limitations de Approval Tests, il est possible d'utiliser la librairie [FEST-Assert 2.x](https://github.com/alexruiz/fest-assert-2.x "FEST-Assert 2.x Git Repository") comme indiqué dans la section [Approval Tests vs FEST-Assert 2.x](https://github.com/sanlaville/Dojo69-Filtering/tree/FilteringTest-ArgumentsMockito "Approval Tests vs FEST-Assert 2.x")
+
 # Branches du projet
 
 - [Master](https://github.com/sanlaville/Dojo69-Filtering "master branch") : introduction du dojo 
 - [Approval Tests](https://github.com/sanlaville/Dojo69-Filtering "Approval Tests branch") : un test d'intégration qui permet par exemple d'écrire rapidement un test sur un code legacy pour pouvoir le refactorer.
+- [FilteringTest-ArgumentsMockito](https://github.com/sanlaville/Dojo69-Filtering/tree/FilteringTest-ArgumentsMockito "FilteringTest-ArgumentsMockito branch") : un test unitaire pour la classe `Filtering` sans bouchonner la dépendance externe [maven-filtering](http://maven.apache.org/shared/maven-filtering/ "Maven Filtering Web Site"). Utilisation de [FEST-Assert 2.x](https://github.com/alexruiz/fest-assert-2.x "Fest-Assert 2.x Github Repository") pour pallier aux [limitations de Approval Tests](https://github.com/sanlaville/Dojo69-Filtering/tree/ApprovalTests "Limitations de Approval Tests")
