@@ -8,10 +8,10 @@ L'objectif est d'essayer différentes stratégies d'écriture de tests unitaires
 
 Le but n'est pas de définir la meilleur stratégie mais plutôt de confronter différentes pratiques pour écrire des tests unitaires afin de confronter les avantages et inconvénients de chacune.
 
-## Contexte ##
-Dans cette session, nous partirons d'un code assez simple qui permet de filter un fichier de propriétés contenant des clés (du style prop1=${token-prop1}) et des fichiers de filtres contenant les valeurs des clés (du style token-prop1 = value1). 
+De plus, nous nous fixons la contrainte de ne pas remettre en cause le choix de la librairie externe utilisée [maven-filtering](http://maven.apache.org/shared/maven-filtering/ "Maven Filtering") afin de se rapprocher du cas où nous devons nous intégrer à un environnement prédéfini.
 
-L'implantation se base sur la librairie maven-filtering que nous ne remontons pas en cause dans cette session.
+## Contexte ##
+Dans cette session, nous partirons d'un code assez simple qui permet de filter un fichier de propriétés contenant des clés (du style `prop1=${token-prop1}`) à partir de fichiers de filtres contenant les valeurs des clés (du style `token-prop1 = value1`). 
 
 Le projet ne propose volontairement pas de tests unitaires pour les classes Filtering.java, Main.java et StandardFilterWrapper.java car c'est le but de ce dojo de confronter différentes stratégies de tests unitaires pour ces classes.
 
