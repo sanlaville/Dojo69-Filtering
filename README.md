@@ -5,7 +5,7 @@ Dans cette branche, vous trouverez un test d'intégration qui permet par exemple
 Pour cela nous nous appuyons sur la librairie [ApprovalTests](http://approvaltests.sourceforge.net/ "Approval Tests Library") qui facilite l'écrire de tels tests. 
 
 # Approval Tests
-Cette librairie n'est actuellement disponible dans le repository central de maven. Vous devez donc l'installer sur votre repository local. Suivez les instructions qui se trouve dans le fichier [src\main\lib\README.txt](https://github.com/sanlaville/Dojo69-Filtering/blob/ApprovalTests/src/main/lib/README.txt "Instructions pour installer la librairie Approval Tests")
+Cette librairie n'est actuellement pas disponible dans le repository central de maven. Vous devez donc l'installer sur votre repository local. Suivez les instructions qui se trouve dans le fichier [src\main\lib\README.txt](https://github.com/sanlaville/Dojo69-Filtering/blob/ApprovalTests/src/main/lib/README.txt "Instructions pour installer la librairie Approval Tests")
 
 **Liens** : [Web Site](http://approvaltests.sourceforge.net/ "Approval Tests Library Web Site") | [Blog](http://blog.approvaltests.com/ "Approval Tests Library Blog") | [Source](https://github.com/approvals/ApprovalTests.Java "Approval Tests Library Github Repository") 
 
