@@ -1,28 +1,29 @@
-Dojo69-Filtering
-================
+Approval Tests branch
+=====================
+Dans cette branche, vous trouverez un test d'intégration qui permet par exemple d'écrire rapidement un test sur un code legacy pour pouvoir le refactorer.
 
-Git Repository pour la 69e session du CARA Dojo.
+Pour cela nous nous appuyons sur la librairie [ApprovalTests](http://approvaltests.sourceforge.net/ "Approval Tests Library") qui facilite l'écrire de tels tests. 
 
-## Objectif ##
-L'objectif est d'essayer différentes stratégies d'écriture de tests unitaires pour le code proposé : mock ou pas mock, tester uniquement des méthodes publiques ou plus...
+# Approval Tests
+Cette librairie n'est actuellement disponible dans le repository central de maven. Vous devez donc l'installer sur votre repository local. Suivez les instructions qui se trouve dans le fichier [src\main\lib\README.txt](https://github.com/sanlaville/Dojo69-Filtering/blob/ApprovalTests/src/main/lib/README.txt "Instructions pour installer la librairie Approval Tests")
 
-Le but n'est pas de définir la meilleur stratégie mais plutôt de confronter différentes pratiques pour écrire des tests unitaires afin de confronter les avantages et inconvénients de chacune.
+**Liens** : [Web Site](http://approvaltests.sourceforge.net/ "Approval Tests Library Web Site") | [Blog](http://blog.approvaltests.com/ "Approval Tests Library Blog") | [Source](https://github.com/approvals/ApprovalTests.Java "Approval Tests Library Github Repository") 
 
-De plus, nous nous fixons la contrainte de ne pas remettre en cause le choix de la librairie externe utilisée [maven-filtering](http://maven.apache.org/shared/maven-filtering/ "Maven Filtering") afin de se rapprocher du cas où nous devons nous intégrer à un environnement prédéfini.
+# Améliorations
+## Lancement du test unitaire MainTest via maven
+Pour le moment, cela ne fonctionne pas avec maven. Il faut lancer le test unitaire MainTest dans eclipse.</br>
+Si vous savez comment faire, merci de m'envoyer un pull request.
 
-## Contexte ##
-Dans cette session, nous partirons d'un code assez simple qui permet de filter un fichier de propriétés contenant des clés (du style `prop1=${token-prop1}`) à partir de fichiers de filtres contenant les valeurs des clés (du style `token-prop1 = value1`). 
+## Approvals
+Pour le moment, l'assertion se fait via l'instruction [Approvals.verifyAll("key", keys)](https://github.com/sanlaville/Dojo69-Filtering/blob/ApprovalTests/src/test/java/org/cara/dojo/dojo69/MainTest.java#L23); </br>
+Cela fonctionne bien mais il serait plus intéressant de pouvoir directement indiquer à Approval Tests les deux fichiers à tester :
 
-Le projet ne propose volontairement pas de tests unitaires pour les classes Filtering.java, Main.java et StandardFilterWrapper.java car c'est le but de ce dojo de confronter différentes stratégies de tests unitaires pour ces classes.
+- le fichier produit : config-filtered.properties 
+- et le fichier de référence : [MainTest.approvalTests.approved.txt](https://github.com/sanlaville/Dojo69-Filtering/blob/ApprovalTests/src/test/java/org/cara/dojo/dojo69/MainTest.approvalTests.approved.txt)
 
-Pour lancer une exécution :
+Il faut sans doute regarder vers l'instruction [Approvals.verify(generateFile)](https://github.com/approvals/ApprovalTests.Java/blob/master/java/org/approvaltests/Approvals.java#L159-162);
 
-- packager le projet : mvn clean package
-- se placer sous le répertoire target : cd target
-- lancer la commande :</br>
-	`java -jar dojo69-1.0.0-SNAPHOT.jar test-classes/config.properties test-classes/config-filtered.properties test-classes/filter1.properties test-classes/filter2.properties`
-- le fichier de propriété filtré se trouve sous : test-classes/config-filtered.properties
+# Branches du projet
 
-## Déroulement ##
-Nous ferons plusieurs groupes avec des stratégies différentes et nous partagerons ensuite sur les différentes pratiques. Nous essayerons de faire 2 itérations de 45 minutes : 30 minutes de codage + 15 minutes d'échanges.
- 
+- [Master](https://github.com/sanlaville/Dojo69-Filtering "master branch") : introduction du dojo 
+- [Approval Tests](https://github.com/sanlaville/Dojo69-Filtering "Approval Tests branch") : un test d'intégration qui permet par exemple d'écrire rapidement un test sur un code legacy pour pouvoir le refactorer.
