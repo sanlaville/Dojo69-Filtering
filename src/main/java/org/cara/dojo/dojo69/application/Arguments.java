@@ -1,6 +1,6 @@
 package org.cara.dojo.dojo69.application;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Arguments {
@@ -18,10 +18,9 @@ public class Arguments {
     }
     fileToProcess = args[0];
     fileProcessed = args[1];
-    filterFiles = new ArrayList<String>();
-    for (int i = 2; i < args.length; ++i) {
-      filterFiles.add(args[i]);
-    }
+    
+    String[] copyOfRange = Arrays.copyOfRange(args, 2, args.length);
+    filterFiles = Arrays.asList(copyOfRange);
   }
 
   public List<String> getFilterFiles() {
