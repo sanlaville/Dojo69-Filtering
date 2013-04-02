@@ -31,19 +31,14 @@ public class StandardFilterWrapper extends FileUtils.FilterWrapper {
 
     Properties properties = new Properties();
     FileInputStream fis = null;
-    InputStreamReader reader = null;
     try {
       fis = new FileInputStream(filterFilePath);
-      reader = new InputStreamReader(fis);
       properties.load(fis);
     } catch (IOException e) {
       throw new IllegalArgumentException("Filter file " + filterFilePath
           + " could not be read", e);
     } finally {
       try {
-        if (reader != null) {
-          reader.close();
-        }
         if (fis != null) {
           fis.close();
         }
