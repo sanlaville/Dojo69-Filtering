@@ -1,4 +1,4 @@
-package org.cara.dojo.dojo69;
+package org.cara.dojo.dojo69.adapter.plexus;
 
 import java.io.FileInputStream;
 import java.io.IOException;

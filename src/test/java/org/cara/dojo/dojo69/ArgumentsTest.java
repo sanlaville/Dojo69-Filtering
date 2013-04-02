@@ -1,6 +1,6 @@
 package org.cara.dojo.dojo69;
 
-import org.cara.dojo.dojo69.Arguments;
+import org.cara.dojo.dojo69.application.Arguments;
 import org.fest.assertions.api.Assertions;
 import org.junit.Test;
 

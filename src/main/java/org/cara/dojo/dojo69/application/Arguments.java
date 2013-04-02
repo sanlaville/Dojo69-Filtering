@@ -1,4 +1,4 @@
-package org.cara.dojo.dojo69;
+package org.cara.dojo.dojo69.application;
 
 import java.util.ArrayList;
 import java.util.List;

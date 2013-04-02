@@ -4,6 +4,9 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.cara.dojo.dojo69.adapter.plexus.PlexusFilter;
+import org.cara.dojo.dojo69.application.Arguments;
+import org.cara.dojo.dojo69.application.Filtering;
 import org.fest.assertions.api.Assertions;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -15,7 +18,7 @@ public class FilteringTest {
 	public void filter_Should_GenerateFilteredFile_WithExpectedKey()
 			throws Exception {
 		// Given
-		Filtering filtering = new Filtering();
+		Filtering filtering = new Filtering(new PlexusFilter());
 		
 		String fileToProcess = "target/test-classes/config.properties";
 		String fileProcessed = "target/test-classes/config-filtered.properties";
