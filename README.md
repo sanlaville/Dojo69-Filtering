@@ -1,23 +1,21 @@
-FilteringTest-ArgumentsMockito branch
+main-application-adapter-architecture branch
 =====================================
-Dans cette branche, vous trouverez un test unitaire pour la classe `Filtering` :
-
-- On ne bouchonne pas notre dépendance externe [maven-filtering](http://maven.apache.org/shared/maven-filtering/ "Maven Filtering Web Site")
-- Utilisation de la librairie [Mockito](http://code.google.com/p/mockito/ "Mockito Web Site") pour bouchonner la classe `Arguments` du projet 
-- Utilisation de [FEST-Assert 2.x](https://github.com/alexruiz/fest-assert-2.x "Fest-Assert 2.x Github Repository") pour vérifier que les deux fichiers (résultats et de référence) sont identiques
-
-# Approval Tests vs FEST-Assert 2.x
-Afin de pallier aux [limitations de Approval Tests](https://github.com/sanlaville/Dojo69-Filtering/tree/ApprovalTests "Limitations de Approval Tests"), nous utilisons cette fois la librairie [FEST-Assert 2.x](https://github.com/alexruiz/fest-assert-2.x "Fest-Assert 2.x Github Repository"). Cette librairie propose la classe [FileAssert](https://github.com/alexruiz/fest-assert-2.x/blob/master/src/main/java/org/fest/assertions/api/FileAssert.java "FileAssert source code") qui nous permet de facilement comparer les deux fichiers (résultats et de référence).
-
-Un autre avantage est qu'il n'est plus nécessaire de rajouter un label (pour distinguer chaque item de la liste des clés) au début de chaque ligne dans le fichier de référence. Du coup, les fichiers de référence et de résultats correspondent bien au format attendu. Un exemple vaut mieux qu'un long discours :
-
-- Avec Approval Tests : `key[1] = key-filter1=sucess: value from filter1`
-- Avec FEST-Assert 2.x : `key-filter1=sucess: value from filter1`
-
-Par contre, on perd l'avantage de l'utilisation des [Reporters](http://blog.approvaltests.com/2011/12/using-reporters-in-approval-tests.html "Approval Test Reporters article") de Approval Tests et le fait qu'il nous ouvre automatiquement un outil de merge comme TortoiseDiff ou WinMerge.
 
 
-# Branches du projet
+- 3 modules sont extraites,
+-- main configure et lance l'application (la plupart des "new" se trouvent ici), il dépend de tout le monde
+-- application, ne dépend de personne! Déclare les interfaces (minimales, ici Filter) pour les interactions avec le reste du monde (acces disque, bdd, UI,...)
+-- adapter.plexus l'implémentation de Filter avec tout ce qui va avec. 
+chacun devrait etre dans un module maven séparé pour enforcer la direction des dépendances (trop faible avec les packages)
+
+
+Afin d'épargner les utilisateurs de savoir que Arguments est construit, puis configuré on peut le construire en un seul appel Arguments.parse().
+
+
+# Strategie de tests # 
+- Main avec un test d'intégration haut niveau - pas ou peu de mocks.
+- application avec seulement des tests unitaires
+- adapter.plexus, pas ou peu de mocks (s'assurer qu'on utilise bien l'outil http://www.mockobjects.com/2008/11/only-mock-types-you-own-revisited.html)
 
 - [Master](https://github.com/sanlaville/Dojo69-Filtering "master branch") : introduction du dojo 
 - [Approval Tests](https://github.com/sanlaville/Dojo69-Filtering/tree/ApprovalTests "Approval Tests branch") : un test d'intégration qui permet par exemple d'écrire rapidement un test sur un code legacy pour pouvoir le refactorer.

@@ -9,7 +9,7 @@ public class Arguments {
   private String fileProcessed;
   private List<String> filterFiles;
 
-  private Arguments(String fileToProcess, String fileProcessed,
+  Arguments(String fileToProcess, String fileProcessed,
       List<String> filterFiles) {
 	  this.fileToProcess = fileToProcess;
 	  this.fileProcessed = fileProcessed;
