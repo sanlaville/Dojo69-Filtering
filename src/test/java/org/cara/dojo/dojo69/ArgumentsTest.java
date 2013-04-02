@@ -11,11 +11,10 @@ public class ArgumentsTest {
   public void parse_Should_ThrowException_IfLessThan2Arguments() {
 
     // Given
-    Arguments arguments = new Arguments();
-    String args[] = new String[] { "one" };
+  	String args[] = new String[] { "one" };
 
     // When
-    arguments.parse(args);
+  	Arguments.parse(args);
 
     // Then
     // Exception thrown
@@ -24,11 +23,8 @@ public class ArgumentsTest {
   @Test(expected = IllegalArgumentException.class)
   public void parse_Should_ThrowException_IfArgumentsAreNull() {
 
-    // Given
-    Arguments arguments = new Arguments();
-
     // When
-    arguments.parse(null);
+    Arguments.parse(null);
 
     // Then
     // Exception thrown
@@ -38,7 +34,6 @@ public class ArgumentsTest {
   public void parse_Should_ReadArguments() {
 
     // Given
-    Arguments arguments = new Arguments();
     String arg1 = "one";
     String arg2 = "two";
     String arg3 = "three";
@@ -46,7 +41,7 @@ public class ArgumentsTest {
     String args[] = new String[] { arg1, arg2, arg3, arg4 };
 
     // When
-    arguments.parse(args);
+    Arguments arguments = Arguments.parse(args);
 
     // Then
     Assertions.assertThat(arguments.getFileToProcess()).isEqualTo(arg1);

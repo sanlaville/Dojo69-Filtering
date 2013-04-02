@@ -9,19 +9,23 @@ public class Arguments {
   private String fileProcessed;
   private List<String> filterFiles;
 
-  public void parse(String[] args) {
-
-    final int nbMinExpectedArgs = 2;
-    if (args == null || args.length < nbMinExpectedArgs) {
-      throw new IllegalArgumentException("Expecting at least "
-          + nbMinExpectedArgs + " arguments.");
-    }
-    fileToProcess = args[0];
-    fileProcessed = args[1];
-    
-    String[] copyOfRange = Arrays.copyOfRange(args, 2, args.length);
-    filterFiles = Arrays.asList(copyOfRange);
+  private Arguments(String fileToProcess, String fileProcessed,
+      List<String> filterFiles) {
+	  this.fileToProcess = fileToProcess;
+	  this.fileProcessed = fileProcessed;
+	  this.filterFiles = filterFiles;
   }
+
+	public static Arguments parse(String[] args) {
+		
+		final int nbMinExpectedArgs = 2;
+		if (args == null || args.length < nbMinExpectedArgs) {
+			throw new IllegalArgumentException("Expecting at least "
+					+ nbMinExpectedArgs + " arguments.");
+		}
+		String[] remainingArgs = Arrays.copyOfRange(args, 2, args.length);
+		return new Arguments(args[0], args[1], Arrays.asList(remainingArgs));
+	}
 
   public List<String> getFilterFiles() {
 

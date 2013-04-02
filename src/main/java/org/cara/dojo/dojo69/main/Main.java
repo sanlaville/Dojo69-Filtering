@@ -11,8 +11,7 @@ public class Main {
   public static void main(String[] args) throws MavenFilteringException,
       IOException {
 
-    Arguments arguments = new Arguments();
-    arguments.parse(args);
+    Arguments arguments = Arguments.parse(args);
 
     // valorize the the file from the config file
     Filtering valorization = new Filtering(new PlexusFilter());
