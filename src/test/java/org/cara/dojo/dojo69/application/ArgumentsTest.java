@@ -1,4 +1,4 @@
-package org.cara.dojo.dojo69;
+package org.cara.dojo.dojo69.application;
 
 import org.cara.dojo.dojo69.application.Arguments;
 import org.fest.assertions.api.Assertions;

@@ -37,8 +37,8 @@ public class Arguments {
     return fileToProcess;
   }
 
-public String getFileProcessed() {
-	return fileProcessed;
-}
+  public String getFileProcessed() {
+  	return fileProcessed;
+  }
 
 }
