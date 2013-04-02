@@ -23,7 +23,7 @@ public class ApplicationTest {
 	public void filter_Should_GenerateFilteredFile_WithExpectedKey()
 			throws Exception {
 		// Given
-		String fileToProcess = "target/test-classes/config.properties";
+		String fileToProcess = "src/test/resources/config.properties";
 		String[] args = new String[] {fileToProcess, fileProcessed, "target/test-classes/filter1.properties", "target/test-classes/filter2.properties"};
 
 		// When

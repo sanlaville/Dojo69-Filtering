@@ -1,41 +1,13 @@
 package org.cara.dojo.dojo69.adapter.plexus;
 
-import static java.util.Arrays.asList;
-
-import java.io.File;
-import java.util.List;
-
-import org.cara.dojo.dojo69.application.Filter;
-import org.fest.assertions.api.Assertions;
-import org.junit.Before;
-import org.junit.Test;
+import org.cara.dojo.dojo69.application.FilterTest;
 
 
-public class PlexusFilterTest {
 
-	File expectedFileProcessed = new File("target/test-classes/FilteringTest.filter_Should_GenerateFilteredFile_WithExpectedKey.approved.txt");
-	String fileProcessed = "target/test-classes/config-filtered.properties";
-	 
-	@Before
-	public void initBeforeTest() throws Exception {
-		File fileFromLastExecution = new File(fileProcessed);
-		if (fileFromLastExecution.exists())
-			fileFromLastExecution.delete();
-	}
-		
-	@Test
-	public void filter_Should_GenerateFilteredFile_WithExpectedKey()
-			throws Exception {
-		// Given
-		String fileToProcess = "src/test/resources/config.properties";
+public class PlexusFilterTest extends FilterTest {
 
-		// When
-		Filter filter = new PlexusFilter();
-		List<String> filterFiles = asList("target/test-classes/filter1.properties", "target/test-classes/filter2.properties");
-		filter.filter(fileToProcess, fileProcessed, filterFiles );
-		
-		// Then
-		File actualFileProcessed = new File(fileProcessed);
-		Assertions.assertThat(actualFileProcessed).hasContentEqualTo(expectedFileProcessed);
-	}
+	@Override
+  protected PlexusFilter newFilter() {
+	  return new PlexusFilter();
+  }
 }
