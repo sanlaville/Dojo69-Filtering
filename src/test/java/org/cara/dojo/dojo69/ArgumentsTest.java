@@ -1,56 +1,59 @@
 package org.cara.dojo.dojo69;
 
-import org.cara.dojo.dojo69.Arguments;
 import org.fest.assertions.api.Assertions;
-import org.junit.Test;
+import org.junit.Assert;
+import org.junit.runner.RunWith;
 
+import com.googlecode.zohhak.api.Coercion;
+import com.googlecode.zohhak.api.TestWith;
+import com.googlecode.zohhak.api.runners.ZohhakRunner;
 
+@RunWith(ZohhakRunner.class)
 public class ArgumentsTest {
 
-  @Test(expected = IllegalArgumentException.class)
-  public void parse_Should_ThrowException_IfLessThan2Arguments() {
+  @TestWith({"null", "one"})
+  public void parse_Should_ThrowException_IfLessThan2Arguments(String args[]) {
 
     // Given
     Arguments arguments = new Arguments();
-    String args[] = new String[] { "one" };
+
+    // When
+    try
+    {
+    	arguments.parse(args);
+    	Assert.fail("Expected an IllegalArgumentException but was not thrown.");
+    }
+    catch (IllegalArgumentException iae)
+    {
+    	// Then
+    	// Excepted an IllegalArgumentException
+    }
+  }
+  
+  @TestWith({"one:two", "one:two:three", "one:two:three:four", "one:two:three:four:five:six:seven"})
+  public void parse_Should_ReadArguments(String[] args) {
+
+    // Given
+    Arguments arguments = new Arguments();
+
 
     // When
     arguments.parse(args);
 
     // Then
-    // Exception thrown
+    Assertions.assertThat(arguments.getFileToProcess()).isEqualTo(args[0]);
+    Assertions.assertThat(arguments.getFileProcessed()).isEqualTo(args[1]);
+    
+    String[] filterFilesArgs = new String[args.length -2];
+    for (int i = 2; i < args.length; i++) {
+    	filterFilesArgs[i-2] = args[i];
+    }
+    Assertions.assertThat(arguments.getFilterFiles()).containsExactly(filterFilesArgs);
+   
   }
-
-  @Test(expected = IllegalArgumentException.class)
-  public void parse_Should_ThrowException_IfArgumentsAreNull() {
-
-    // Given
-    Arguments arguments = new Arguments();
-
-    // When
-    arguments.parse(null);
-
-    // Then
-    // Exception thrown
-  }
-
-  @Test
-  public void parse_Should_ReadArguments() {
-
-    // Given
-    Arguments arguments = new Arguments();
-    String arg1 = "one";
-    String arg2 = "two";
-    String arg3 = "three";
-    String arg4 = "four";
-    String args[] = new String[] { arg1, arg2, arg3, arg4 };
-
-    // When
-    arguments.parse(args);
-
-    // Then
-    Assertions.assertThat(arguments.getFileToProcess()).isEqualTo(arg1);
-    Assertions.assertThat(arguments.getFileProcessed()).isEqualTo(arg2);
-    Assertions.assertThat(arguments.getFilterFiles()).containsExactly(arg3, arg4);
+  
+  @Coercion
+  public String[] buildArgs(String input) {
+	  return input.split(":");
   }
 }

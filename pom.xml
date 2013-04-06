@@ -33,6 +33,12 @@
 			<version>1.8.4</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.googlecode.zohhak</groupId>
+			<artifactId>zohhak</artifactId>
+			<version>1.0.0-beta1</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
